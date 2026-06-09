@@ -121,4 +121,17 @@ def exibir_menu():
             break
         else:
             print('Opção invalida. Tente novamente.\n')
-exibir_menu()
+
+def excluir_meta()
+    consultar_meta()
+    if len(metas) == 0:
+        return
+    else:
+        numero = int(input('Digite o numero da meta para excluir :'))  #
+        indice = numero - 1
+        if indice <= len(meta):
+            meta.pop(indice)
+
+            print('meta excluida .\n')
+        else:
+            print('numero invalido.\n')
