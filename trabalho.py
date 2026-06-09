@@ -37,7 +37,7 @@ def consultar_metas():
     print()
 
 
-def buscar_sessao():
+def buscar_meta():
     termo = str(input("Buscar por nome ou prazo: ")).lower()
 
     encontrados = []
@@ -78,6 +78,8 @@ def marcar_realizada():
         print("✅ Meta marcada como realizada! ✅\n")
     else:
         print("⚠️ Número inválido! ⚠️\n")
+
+
 def atualizar_meta():
     consultar_metas()
 
@@ -96,3 +98,27 @@ def atualizar_meta():
         print("✏️ Meta atualizada com sucesso! ✏️\n")
     else:
         print("⚠️ Número inválido! ⚠️\n")
+
+def exibir_menu():
+    while True:
+        print('=== Sistema de metas pessoais ===')
+        print('1. Cadastrar nova meta')
+        print('2. Ver todas as metas')
+        print('3. Buscar por tema ou dia')
+        print('4. Marcar meta como realizada')
+        print('5. Sair')
+        escolha = str(input('Escolha uma opção:'))
+        if escolha == '1':
+            cadastrar_meta()
+        elif escolha == '2':
+            consultar_metas()
+        elif escolha == '3':
+            buscar_meta()
+        elif escolha == '4':
+            marcar_realizada()
+        elif escolha == '5':
+            print('Saindo do sistema. Até a Proxima!')
+            break
+        else:
+            print('Opção invalida. Tente novamente.\n')
+exibir_menu()
