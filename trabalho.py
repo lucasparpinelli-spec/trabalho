@@ -143,7 +143,7 @@ def excluir_meta():
 
 def iniciar_sistema():
      print("..... Sistema iniciando ....")
-     print(" Olá Usuario insira como quer ser chamado ")
+     print(" Olá Usuario insira como quer ser chamado: ")
      nome=str(input())
      print(f'Sejá bem vindo ao sistema {nome}')
      exibir_menu()
