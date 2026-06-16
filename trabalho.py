@@ -18,7 +18,7 @@ def cadastrar_meta():
     print("😁 Meta cadastrada com sucesso! 😁\n")
 
 
-def consultar_metas():
+def consultar_meta():
     if len(metas) == 0:
         print("😅 Não há metas cadastradas! 😅\n")
         return
@@ -65,7 +65,7 @@ def buscar_meta():
 
 
 def marcar_realizada():
-    consultar_metas()
+    consultar_meta()
 
     if len(metas) == 0:
         return
@@ -81,7 +81,7 @@ def marcar_realizada():
 
 
 def atualizar_meta():
-    consultar_metas()
+    consultar_meta()
 
     if len(metas) == 0:
         return
@@ -103,35 +103,42 @@ def exibir_menu():
     while True:
         print('=== Sistema de metas pessoais ===')
         print('1. Cadastrar nova meta')
-        print('2. Ver todas as metas')
+        print('2. Consultar todas as metas')
         print('3. Buscar por tema ou dia')
         print('4. Marcar meta como realizada')
-        print('5. Sair')
+        print('5. Atualizar meta')
+        print('6. Excluir meta')
+        print('7. Sair')
         escolha = str(input('Escolha uma opção:'))
         if escolha == '1':
             cadastrar_meta()
         elif escolha == '2':
-            consultar_metas()
+            consultar_meta()
         elif escolha == '3':
             buscar_meta()
         elif escolha == '4':
             marcar_realizada()
         elif escolha == '5':
+            atualizar_meta()
+        elif escolha == '6':
+            excluir_meta()
+        elif escolha == '7':
             print('Saindo do sistema. Até a Proxima!')
             break
         else:
             print('Opção invalida. Tente novamente.\n')
 
-def excluir_meta()
+def excluir_meta():
     consultar_meta()
     if len(metas) == 0:
         return
     else:
-        numero = int(input('Digite o numero da meta para excluir :'))  #
+        numero = int(input('Digite o numero da meta para excluir :'))
         indice = numero - 1
-        if indice <= len(meta):
-            meta.pop(indice)
-
+        if indice <= len(metas):
+            metas.pop(indice)
             print('meta excluida .\n')
         else:
             print('numero invalido.\n')
+
+exibir_menu()
