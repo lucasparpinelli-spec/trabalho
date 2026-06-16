@@ -1,9 +1,9 @@
 metas = []
-
+# lucas ⬇️
 def cadastrar_meta():
     nome = str(input("Digite o nome da meta: "))
     prazo = str(input("Digite o prazo da meta: "))
-    categoria = str(input("Digite qual é a categoria: "))
+    categoria = str(input("Digite qual é a categoria Da Meta: "))
     prioridade = str(input("Digite a prioridade: "))
 
     meta = {
@@ -11,21 +11,21 @@ def cadastrar_meta():
         "prazo": prazo,
         "categoria": categoria,
         "prioridade": prioridade,
-        "pendente": False
+        "realizada": False
     }
 
     metas.append(meta)
     print("😁 Meta cadastrada com sucesso! 😁\n")
 
-
-def consultar_metas():
+# lucas ⬇️
+def consultar_meta():
     if len(metas) == 0:
         print("😅 Não há metas cadastradas! 😅\n")
         return
 
     num = 1
     for meta in metas:
-        if meta["pendente"] == True:
+        if meta["realizada"] == True:
             status = "✅ Realizada"
         else:
             status = "❌ Pendente"
@@ -36,14 +36,14 @@ def consultar_metas():
         num += 1
     print()
 
-
+# lucas ⬇️
 def buscar_meta():
-    termo = str(input("Buscar por nome ou prazo: ")).lower()
+    buscar = str(input("Buscar por nome ou prazo: ")).lower()
 
     encontrados = []
 
     for meta in metas:
-        if termo in meta["nome"].lower() or termo in meta["prazo"].lower():
+        if buscar in meta["nome"].lower() or buscar in meta["prazo"].lower():
             encontrados.append(meta)
 
     if len(encontrados) == 0:
@@ -63,9 +63,9 @@ def buscar_meta():
         num += 1
     print()
 
-
+# lucas ⬇️
 def marcar_realizada():
-    consultar_metas()
+    consultar_meta()
 
     if len(metas) == 0:
         return
@@ -79,9 +79,9 @@ def marcar_realizada():
     else:
         print("⚠️ Número inválido! ⚠️\n")
 
-
+# lucas ⬇️
 def atualizar_meta():
-    consultar_metas()
+    consultar_meta()
 
     if len(metas) == 0:
         return
@@ -98,40 +98,45 @@ def atualizar_meta():
         print("✏️ Meta atualizada com sucesso! ✏️\n")
     else:
         print("⚠️ Número inválido! ⚠️\n")
-
+# samay ⬇️
 def exibir_menu():
     while True:
         print('=== Sistema de metas pessoais ===')
         print('1. Cadastrar nova meta')
-        print('2. Ver todas as metas')
+        print('2. Consultar todas as metas')
         print('3. Buscar por tema ou dia')
         print('4. Marcar meta como realizada')
-        print('5. Sair')
+        print('5. Excluir meta')
+        print('6. Sair')
         escolha = str(input('Escolha uma opção:'))
         if escolha == '1':
             cadastrar_meta()
         elif escolha == '2':
-            consultar_metas()
+            consultar_meta()
         elif escolha == '3':
             buscar_meta()
         elif escolha == '4':
             marcar_realizada()
         elif escolha == '5':
+            excluir_meta()
+            print('Meta excluida .')
+        elif escolha == '6':
             print('Saindo do sistema. Até a Proxima!')
             break
         else:
             print('Opção invalida. Tente novamente.\n')
-
-def excluir_meta()
+# samay ⬇️
+def excluir_meta():
     consultar_meta()
     if len(metas) == 0:
         return
     else:
-        numero = int(input('Digite o numero da meta para excluir :'))  #
+        numero = int(input('Digite o numero da meta para excluir :'))
         indice = numero - 1
-        if indice <= len(meta):
-            meta.pop(indice)
-
+        if indice <= len(metas):
+            metas.pop(indice)
             print('meta excluida .\n')
         else:
             print('numero invalido.\n')
+
+exibir_menu()
