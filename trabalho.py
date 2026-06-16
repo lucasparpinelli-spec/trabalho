@@ -52,7 +52,7 @@ def buscar_meta():
 
     num = 1
     for meta in encontrados:
-        if meta["pendente"] == True:
+        if meta["realizada"] == True:
             status = "✅ Realizada"
         else:
             status = "❌ Pendente"
@@ -74,7 +74,7 @@ def marcar_realizada():
     indice = num - 1
 
     if 0 <= indice < len(metas):
-        metas[indice]["pendente"] = True
+        metas[indice]["realizada"] = True
         print("✅ Meta marcada como realizada! ✅\n")
     else:
         print("⚠️ Número inválido! ⚠️\n")
@@ -107,7 +107,8 @@ def exibir_menu():
         print('3. Buscar por tema ou dia')
         print('4. Marcar meta como realizada')
         print('5. Excluir meta')
-        print('6. Sair')
+        print('6. Atualizar meta')
+        print('7. Sair')
         escolha = str(input('Escolha uma opção:'))
         if escolha == '1':
             cadastrar_meta()
@@ -119,8 +120,9 @@ def exibir_menu():
             marcar_realizada()
         elif escolha == '5':
             excluir_meta()
-            print('Meta excluida .')
         elif escolha == '6':
+            atualizar_meta()
+        elif escolha == '7':
             print('Saindo do sistema. Até a Proxima!')
             break
         else:
@@ -133,10 +135,16 @@ def excluir_meta():
     else:
         numero = int(input('Digite o numero da meta para excluir :'))
         indice = numero - 1
-        if indice <= len(metas):
+        if 0 <= indice < len(metas):
             metas.pop(indice)
             print('meta excluida .\n')
         else:
             print('numero invalido.\n')
 
-exibir_menu()
+def iniciar_sistema():
+     print("..... Sistema iniciando ....")
+     print(" Olá Usuario insira como quer ser chamado ")
+     nome=str(input())
+     print(f'Sejá bem vindo ao sistema {nome}')
+     exibir_menu()
+iniciar_sistema()
